@@ -1,18 +1,14 @@
-import { Tabs } from "expo-router";
-import { FontAwesome } from "@expo/vector-icons";
-import { Drawer } from "expo-router/drawer";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-export default function TabLayout() {
+import { View, Text } from 'react-native'
+import React from 'react'
+import { Stack } from 'expo-router';
+import { Background } from '@react-navigation/elements';
+export default function _layout() {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer>
-         <Tabs>
-      <Tabs.Screen name="index" options={{ title: "Home", tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} /> }} />
-      <Tabs.Screen name="about" options={{ title: "About", tabBarIcon: ({ color }) => <FontAwesome size={28} name="info-circle" color={color} /> }} />
-      <Tabs.Screen name="profile" options={{ title: "Profile", tabBarIcon: ({ color }) => <FontAwesome size={28} name="user" color={color} /> }} />
-    </Tabs>
-      </Drawer>
-        
-    </GestureHandlerRootView>
-  );
+<Stack>
+  <Stack.Screen name="index" options={{ title: "Home" }} />,
+<Stack.Screen name="signup" options={{ title: "Signup" }} />,
+<Stack.Screen name="login" options={{ title: "Login" }} />
+<Stack.Screen name="modal" options={{ title: "modal" }} />
+</Stack>
+  )
 }
