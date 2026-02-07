@@ -5,7 +5,7 @@ import { Background } from '@react-navigation/elements';
 export default function _layout() {
   return (
 <Tabs>
-  <Tabs.Screen name="index" options={{ title: "Calculator"  }} />,
+  <Tabs.Screen name="index" options={{ title: "Scoreboard"  }} />,
 
 </Tabs>
   )
