@@ -1,17 +1,30 @@
-import { View, Text, Modal,Button } from 'react-native'
+import { View, Text,Button } from 'react-native'
 import React from 'react'
 import { useState } from 'react';
+import ReactNativeModal from 'react-native-modal';
 export default function index() {
-  const [visible, setVisible] =useState(false);
+  const [modalVisible, setModalVisible] = useState(false)
   return (
     <View>
-      <Button title="Open Modal" onPress={() =>setVisible(true)} />
-        <Modal  visible={visible} animationType="fade" onRequestClose={() => setVisible(false)}  >
-<View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#f0f0f0" }}>
-  <Text style={{ fontSize: 18, marginBottom: 20 }}>This is a modal!</Text>
-  <Button title="Close Modal" onPress={() => setVisible(false)} />
-</View> 
-        </Modal>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginTop: 20 }}>
+        Welcome to the Scoreboard App!
+      </Text>   
+
+      <Button title="Show Modal" onPress={() => setModalVisible(true)} />
+<ReactNativeModal
+  isVisible={modalVisible}
+  onBackdropPress={() => setModalVisible(false)}
+  onBackButtonPress={() => setModalVisible(false)}
+  onBackDropPress={() => setModalVisible(false)}
+  animationIn={"swing"}
+  animationOut={"swing"}
+  style={{ justifyContent: 'center', alignItems: 'center' }}
+>
+  <View style={{ backgroundColor: 'white', padding: 20, borderRadius: 10 }}>
+    <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>This is a Modal!</Text>
+    <Button title="Close" onPress={() => setModalVisible(false)} />
+  </View>
+</ReactNativeModal>           
     </View>
   )
 }
