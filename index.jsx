@@ -1,76 +1,17 @@
-import { View, Text,ScrollView,TextInput } from 'react-native'
+import { View, Text, Modal,Button } from 'react-native'
 import React from 'react'
-
+import { useState } from 'react';
 export default function index() {
+  const [visible, setVisible] =useState(false);
   return (
-       <ScrollView   showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#f0f0f0" }}>
-
-          <TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999"
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 15, backgroundColor: "#fff" }}
-      />
-
-      <TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999" secureTextEntry
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 20, backgroundColor: "#fff" }}
-      />
-      <TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999"
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 15, backgroundColor: "#fff" }}
-      />
-
-      <TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999" secureTextEntry
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 20, backgroundColor: "#fff" }}
-      /><TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999"
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 15, backgroundColor: "#fff" }}
-      />
-
-      <TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999" secureTextEntry
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 20, backgroundColor: "#fff" }}
-      /><TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999"
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 15, backgroundColor: "#fff" }}
-      />
-
-      <TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999" secureTextEntry
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 20, backgroundColor: "#fff" }}
-      /><TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999"
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 15, backgroundColor: "#fff" }}
-      />
-
-      <TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999" secureTextEntry
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 20, backgroundColor: "#fff" }}
-      /><TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999"
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 15, backgroundColor: "#fff" }}
-      />
-
-      <TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999" secureTextEntry
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 20, backgroundColor: "#fff" }}
-      /><TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999"
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 15, backgroundColor: "#fff" }}
-      />
-
-      <TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999" secureTextEntry
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 20, backgroundColor: "#fff" }}
-      /><TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999"
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 15, backgroundColor: "#fff" }}
-      />
-
-      <TextInput
-       placeholder=" Scroalbar" placeholderTextColor="#999" secureTextEntry
-        style={{ width: 280, height: 45, borderWidth: 1, borderColor: "#ccc", borderRadius: 12, paddingHorizontal: 12, marginBottom: 20, backgroundColor: "#fff" }}
-      />
-       </ScrollView>
+    <View>
+      <Button title="Open Modal" onPress={() =>setVisible(true)} />
+        <Modal  visible={visible} animationType="fade" onRequestClose={() => setVisible(false)}  >
+<View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#f0f0f0" }}>
+  <Text style={{ fontSize: 18, marginBottom: 20 }}>This is a modal!</Text>
+  <Button title="Close Modal" onPress={() => setVisible(false)} />
+</View> 
+        </Modal>
+    </View>
   )
 }
