@@ -1,38 +1,35 @@
-import { View, Text } from "react-native";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import { useFonts, Poppins_700Bold_Italic } from "@expo-google-fonts/poppins";
+import React from "react";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 
-// splash ko auto hide se roko
-SplashScreen.preventAutoHideAsync();
-
-export default function Home() {
-  const [fontsLoaded] = useFonts({
-    Poppins_700Bold_Italic,
-  });
-
-  useEffect(() => {
-    if (fontsLoaded) {
-      SplashScreen.hideAsync(); // fonts load hone ke baad splash hide
-    }
-  }, [fontsLoaded]);
-
-  // jab tak fonts load na hon kuch render na ho
-  if (!fontsLoaded) {
-    return null;
-  }
-
+export default function App() {
   return (
-    <View className="flex-1 bg-black justify-center items-center">
-      <Text
-        style={{
-          fontFamily: "Poppins_700Bold_Italic",
-          color: "white",
-          fontSize: 24,
-        }}
-      >
-        Welcome to the Home Screen
-      </Text>
-    </View>
+    <ScrollView style={styles.container}>
+      
+      <Text style={styles.box}>Item 1</Text>
+      <Text style={styles.box}>Item 2</Text>
+      <Text style={styles.box}>Item 3</Text>
+      <Text style={styles.box}>Item 4</Text>
+      <Text style={styles.box}>Item 5</Text>
+      <Text style={styles.box}>Item 6</Text>
+      <Text style={styles.box}>Item 7</Text>
+      <Text style={styles.box}>Item 8</Text>
+
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  box: {
+    height: 100,
+    backgroundColor: "#4caf50",
+    marginBottom: 15,
+    textAlign: "center",
+    textAlignVertical: "center",
+    color: "white",
+    fontSize: 20,
+  },
+});
