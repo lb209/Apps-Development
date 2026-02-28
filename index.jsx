@@ -1,35 +1,43 @@
 import React from "react";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet } from "react-native";
+
+const data = [
+  { id: "1", name: "Item 1" },
+  { id: "2", name: "Item 2" },
+  { id: "3", name: "Item 3" },
+  { id: "4", name: "Item 4" },
+    { id: "5", name: "Item 4" },
+      { id: "6", name: "Item 4" },
+        { id: "7", name: "Item 4" },
+
+          { id: "8", name: "Item 4" },
+            { id: "9", name: "Item 4" },
+];
 
 export default function App() {
   return (
-    <ScrollView style={styles.container}>
-      
-      <Text style={styles.box}>Item 1</Text>
-      <Text style={styles.box}>Item 2</Text>
-      <Text style={styles.box}>Item 3</Text>
-      <Text style={styles.box}>Item 4</Text>
-      <Text style={styles.box}>Item 5</Text>
-      <Text style={styles.box}>Item 6</Text>
-      <Text style={styles.box}>Item 7</Text>
-      <Text style={styles.box}>Item 8</Text>
-
-    </ScrollView>
+    <FlatList
+      data={data}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => (
+        <View style={styles.box}>
+          <Text style={styles.text}>{item.name}</Text>
+        </View>
+      )}
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
   box: {
-    height: 100,
+    height: 80,
     backgroundColor: "#4caf50",
-    marginBottom: 15,
-    textAlign: "center",
-    textAlignVertical: "center",
+    margin: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
     color: "white",
-    fontSize: 20,
+    fontSize: 18,
   },
 });
