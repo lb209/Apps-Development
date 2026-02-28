@@ -1,23 +1,22 @@
-import { StyleSheet, View, Text } from "react-native";
+import { View, Text, Platform } from 'react-native'
+import React from 'react'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f2f2f2",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    color: "blue",
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-});
-
-export default function App() {
+export default function Index() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello World!</Text>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      
+      <Text style={{ fontSize: 20, marginBottom: 20 }}>
+        Current Platform: {Platform.OS}
+      </Text>
+
+      {
+        Platform.OS === "android" ? (
+          <View style={{ width: 100, height: 100, backgroundColor: "green" }} />
+        ) : (
+          <View style={{ width: 100, height: 100, backgroundColor: "blue" }} />
+        )
+      }
+
     </View>
-  );
+  )
 }
