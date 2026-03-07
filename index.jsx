@@ -1,27 +1,34 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 
 export default function Home() {
-  const [count, setCount] = useState(0);
-
-  const increment = () => setCount(count + 1);
-  const decrement = () => setCount(count - 1);
+  const [log, setLog] = useState(true);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>✨ VIP Counter ✨</Text>
-
-      <Text style={styles.countText}>{count}</Text>
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={[styles.button, styles.decrement]} onPress={decrement}>
-          <Text style={styles.buttonText}>-</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={[styles.button, styles.increment]} onPress={increment}>
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
-      </View>
+      {log ? (
+        <View style={styles.card}>
+          <Text style={styles.text}>Welcome User</Text>
+          <View style={styles.buttonContainer}>
+            <Button
+              title="Logout"
+              color="#e74c3c"
+              onPress={() => setLog(!log)}
+            />
+          </View>
+        </View>
+      ) : (
+        <View style={styles.card}>
+          <Text style={styles.text}>Please Login</Text>
+          <View style={styles.buttonContainer}>
+            <Button
+              title="Login"
+              color="#27ae60"
+              onPress={() => setLog(!log)}
+            />
+          </View>
+        </View>
+      )}
     </View>
   );
 }
@@ -29,51 +36,29 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#f5f6fa",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#1e1e2f",
   },
-  title: {
-    fontSize: 28,
-    color: "#f8c700",
-    fontWeight: "bold",
-    marginBottom: 40,
+  card: {
+    width: 300,
+    padding: 30,
+    borderRadius: 20,
+    backgroundColor: "#ffffff",
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 5 },
+    shadowRadius: 10,
+    elevation: 5,
+    alignItems: "center",
   },
-  countText: {
-    fontSize: 80,
-    color: "#ffffff",
+  text: {
+    fontSize: 22,
     fontWeight: "bold",
-    marginBottom: 40,
-    textShadowColor: "#f8c700",
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 10,
+    marginBottom: 20,
+    color: "#2c3e50",
   },
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "60%",
-  },
-  button: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "#f8c700",
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.8,
-    shadowRadius: 10,
-    elevation: 10,
-  },
-  increment: {
-    backgroundColor: "#28c76f",
-  },
-  decrement: {
-    backgroundColor: "#ea5455",
-  },
-  buttonText: {
-    fontSize: 40,
-    color: "#ffffff",
-    fontWeight: "bold",
+    width: "100%",
   },
 });
