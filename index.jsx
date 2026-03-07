@@ -1,30 +1,29 @@
 import React, { useState } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button } from "react-native";
 
 export default function Home() {
 
-  const [dark, setDark] = useState(false);
+  const [count, setCount] = useState(0);
+  let interval;
+
+  const start = () => {
+    interval = setInterval(() => {
+      setCount(prev => prev + 1);
+    }, 1000);
+  };
+
+  const stop = () => {
+    clearInterval(interval);
+  };
 
   return (
-    <View style={[styles.container, {backgroundColor: dark ? "black" : "white"}]}>
+    <View>
 
-      <Text style={{color: dark ? "white" : "black", fontSize: 25}}>
-        {dark ? "Dark Mode" : "Light Mode"}
-      </Text>
+      <Text>{count}</Text>
 
-      <Button
-        title="Toggle Mode"
-        onPress={() => setDark(!dark)}
-      />
+      <Button title="Start" onPress={start} />
+      <Button title="Stop" onPress={stop} />
 
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    justifyContent:"center",
-    alignItems:"center"
-  }
-});
