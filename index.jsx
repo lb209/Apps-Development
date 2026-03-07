@@ -1,22 +1,22 @@
-import { View, Text, Platform } from 'react-native'
-import React from 'react'
+import React, { useState } from "react";
+import { View, Text, Button } from "react-native";
 
-export default function Index() {
+export default function Home() {
+
+  const [show, setShow] = useState(true);
+
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      
-      <Text style={{ fontSize: 20, marginBottom: 20 }}>
-        Current Platform: {Platform.OS}
-      </Text>
+    <View>
+
+      <Button
+        title="Hide / Show"
+        onPress={() => setShow(!show)}
+      />
 
       {
-        Platform.OS === "android" ? (
-          <View style={{ width: 100, height: 100, backgroundColor: "green" }} />
-        ) : (
-          <View style={{ width: 100, height: 100, backgroundColor: "blue" }} />
-        )
+        show && <Text>This is hidden text</Text>
       }
 
     </View>
-  )
+  );
 }
