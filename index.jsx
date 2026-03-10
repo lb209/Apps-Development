@@ -1,42 +1,23 @@
-import React, { useState } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import React, { useEffect, useState } from 'react';
+import { View, Text } from 'react-native';
 
-export default function App() {
+const index = () => {
+ const[counter,setCounter]=useState(0)
 
-  const [randomNumber, setRandomNumber] = useState(0);
-
-  const generateRandom = () => {
-const char="askldjfielkdklsierjkdiaAJLKJADOIJNALDIAJLDNNL;NEORIJAAA12357809892598098290@!#$%^*&!><"
-let pass="";                                  
-for(let i=0;i<10;i++){
-const gan=Math.floor(Math.random()*char.length)
-pass+=char[gan]
-}
-setRandomNumber(pass)
-  };
-
+   useEffect(()=>{
+  const interval=setInterval(()=>{
+    setCounter(prev=>prev+1);
+  },1000)
+  return()=>clearInterval(interval);
+},[])
+  
   return (
-    <View style={styles.container}>
-      
-      <Text style={styles.text}>
-        Random Number: {randomNumber}
-      </Text>
-
-      <Button title="Generate Number" onPress={generateRandom} />
-
+    <View>
+      <Text>Time Counter</Text>
+  
+      <Text>{counter}</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  text: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-});
+export default index;
