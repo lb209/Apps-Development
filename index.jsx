@@ -1,23 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-const index = () => {
- const[counter,setCounter]=useState(0)
+const Index = () => {
+  const [change, setChange] = useState(false);
 
-   useEffect(()=>{
-  const interval=setInterval(()=>{
-    setCounter(prev=>prev+1);
-  },1000)
-  return()=>clearInterval(interval);
-},[])
-  
   return (
-    <View>
-      <Text>Time Counter</Text>
-  
-      <Text>{counter}</Text>
+    <View style={{ padding: 20 }}>
+      
+      <TouchableOpacity
+        style={{
+          width: 120,
+          height: 40,
+          backgroundColor: change ? "white" : "blue",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        onPress={() => setChange(!change)}
+      >
+        <Text style={{ color: change ? "black" : "white", fontSize: 16 }}>
+          {change ? "Flow" : "Flowing"}
+        </Text>
+      </TouchableOpacity>
+
     </View>
   );
 }
 
-export default index;
+export default Index;
