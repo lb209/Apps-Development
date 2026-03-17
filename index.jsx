@@ -1,90 +1,69 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Index = () => {
-  const [quantity, setQuantity] = useState(0);
+const PostCard = () => {
+  // 1️⃣ State
+  const [liked, setLiked] = useState(false);
+  const [count, setCount] = useState(0);
 
-  const addToCart = () => {
-    setQuantity(1);
-  };
-
-  const increase = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const decrease = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    }
+  // 2️⃣ Toggle Like function
+  const toggleLike = () => {
+    setLiked(prev => !prev);
+    setCount(prev => liked ? prev - 1 : prev + 1);
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.card}>
+      
+      <Text style={styles.postTitle}>Beautiful Sunset</Text>
 
-      <Text style={styles.title}>Product: Shoes</Text>
-
-      {
-        quantity === 0 ? (
-          <TouchableOpacity style={styles.addBtn} onPress={addToCart}>
-            <Text style={styles.btnText}>Add to Cart</Text>
-          </TouchableOpacity>
-        ) : (
-          <View style={styles.counterBox}>
-
-            <TouchableOpacity style={styles.box} onPress={decrease}>
-              <Text style={styles.boxText}>-</Text>
-            </TouchableOpacity>
-
-            <Text style={styles.quantity}>{quantity}</Text>
-
-            <TouchableOpacity style={styles.box} onPress={increase}>
-              <Text style={styles.boxText}>+</Text>
-            </TouchableOpacity>
-
-          </View>
-        )
-      }
+      <TouchableOpacity style={styles.likeBtn} onPress={toggleLike}>
+        <Text style={[styles.heart, liked ? styles.liked : styles.notLiked]}>
+          {liked ? '❤️' : '🤍'}
+        </Text>
+        <Text style={styles.count}>{count}</Text>
+      </TouchableOpacity>
 
     </View>
   );
 };
 
-export default Index;
+export default PostCard;
 
 const styles = StyleSheet.create({
-  container: {
+  card: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 15,
+    margin: 20,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 10,
+    elevation: 3, // shadow for Android
+    shadowColor: '#000', // shadow for iOS
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+  },
+  postTitle: {
+    fontSize: 18,
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
-  title: {
-    fontSize: 20,
-    marginBottom: 20,
+  likeBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  addBtn: {
-    backgroundColor: "green",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
+  heart: {
+    fontSize: 24,
+    marginRight: 8,
   },
-  btnText: {
-    color: "white",
+  liked: {
+    color: 'red',
+  },
+  notLiked: {
+    color: 'gray',
+  },
+  count: {
     fontSize: 16,
-  },
-  counterBox: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  box: {
-    backgroundColor: "gray",
-    padding: 10,
-    marginHorizontal: 10,
-  },
-  boxText: {
-    color: "white",
-    fontSize: 18,
-  },
-  quantity: {
-    fontSize: 18,
   },
 });
